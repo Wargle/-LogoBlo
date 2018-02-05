@@ -1,8 +1,14 @@
+package model;
+
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
+/**
+ *
+ * @author Alexis Arnould
+ */
 public class ReadWriteFile implements IReadWriteImg {
 
     private static int caseSizePx = 10;

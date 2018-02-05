@@ -1,3 +1,10 @@
+package model;
+
+
+/**
+ *
+ * @author Alexis Arnould
+ */
 public class MyImage {
     private Case[][] code;
     private IReadWriteImg io;

@@ -1,3 +1,9 @@
+package model;
+
+/**
+ *
+ * @author Alexis Arnould
+ */
 public class CaseNULL extends Case {
     public CaseNULL() {
         super(255, 255, 255, 255);

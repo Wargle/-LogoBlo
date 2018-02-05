@@ -1,3 +1,9 @@
+package model;
+
+/**
+ *
+ * @author Alexis Arnould
+ */
 public class Case {
     protected int rouge, vert, bleu, trans;
 

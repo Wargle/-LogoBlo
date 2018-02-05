@@ -1,3 +1,9 @@
+package model;
+
+/**
+ *
+ * @author Alexis Arnould
+ */
 public class ConvertRgbHexa {
     private static String[][] mapColors;
 
