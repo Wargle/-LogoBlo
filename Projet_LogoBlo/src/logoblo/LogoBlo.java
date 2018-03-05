@@ -15,15 +15,17 @@ import javafx.stage.Stage;
  *
  * @author Alexis Arnould
  */
-public class Projet_LogoBlo extends Application {
+public class LogoBlo extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/view/fxml/MainWindow.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/view/fxml/CodeWindow.fxml"));
         
         Scene scene = new Scene(root);
         
         stage.setScene(scene);
+        stage.setResizable(false);
+        
         stage.show();
     }
 

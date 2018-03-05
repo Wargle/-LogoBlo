@@ -9,9 +9,9 @@ import java.io.IOException;
  *
  * @author Alexis Arnould
  */
-public class ReadWriteFile implements IReadWriteImg {
+public class ReadWriteFile implements IReadWriteImg<Case[][]> {
 
-    private static int caseSizePx = 10;
+    public static int CASE_SIZE = 24;
 
     @Override
     public Case[][] read(String file) {
@@ -29,8 +29,9 @@ public class ReadWriteFile implements IReadWriteImg {
 
     private void writeCase(BufferedImage img, Case c, int x, int y){
         int color = c.getRGB();
-        for(int i = x * caseSizePx; i < x * caseSizePx + caseSizePx; i++) {
-            for(int j = y * caseSizePx; j < y * caseSizePx + caseSizePx; j++) {
+        int a, r,g,b,p;
+        for(int i = x * CASE_SIZE; i < x * CASE_SIZE + CASE_SIZE; i++) {
+            for(int j = y * CASE_SIZE; j < y * CASE_SIZE + CASE_SIZE; j++) {
                 //System.out.println(":: " + i + "xx" + j + " // " + x + "xxx" + y);
                 img.setRGB(i, j, color);
             }
@@ -46,13 +47,14 @@ public class ReadWriteFile implements IReadWriteImg {
             f = new File(file);
             img = ImageIO.read(f);
 
-            for(int i = 0; i < MyImage.getMatriceSize(); i++) {
-                for(int j = 0; j < MyImage.getMatriceSize(); j++) {
-                    //System.out.println(i + "x" + j + " // " + datas[i][j].getRGB());
+            for(int i = 0; i < MyImage.MATRICE_SIZE; i++) {
+                for(int j = 0; j < MyImage.REAL_MATRICE_SIZE; j++) {
+                    if(datas[i][j] == null)
+                        continue;
                     writeCase(img, datas[i][j], i, j);
                 }
             }
-
+            writeCase(img, new CaseBleu(), 0, MyImage.REAL_MATRICE_SIZE);
             ImageIO.write(img, "png", f);
         }
         catch(IOException e) {

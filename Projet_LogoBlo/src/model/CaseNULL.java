@@ -11,6 +11,6 @@ public class CaseNULL extends Case {
 
     @Override
     public int getRGB() {
-        return -1;
+        return (trans<<24) | (rouge<<16) | (vert<<8) | bleu;
     }
 }

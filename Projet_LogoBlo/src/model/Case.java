@@ -7,11 +7,19 @@ package model;
 public class Case {
     protected int rouge, vert, bleu, trans;
 
-    public Case(int r, int v, int b, int t){
-        rouge = r;
-        vert = v;
-        bleu = b;
-        trans = b;
+    public Case(int rouge, int vert, int bleu, int trans){
+        this.rouge = rouge;
+        this.vert = vert;
+        this.bleu = bleu;
+        this.trans = trans;
+    }
+
+    public Case(int color) {
+        this((color>>16) & 0xff, (color>>8) & 0xff, color & 0xff, (color>>24) & 0xff);
+    }
+    
+    public Case(String hexa) {
+        this(ConvertRgbHexa.getRGBFromHexa(hexa));
     }
 
     public int getRouge() {
@@ -31,10 +39,10 @@ public class Case {
     }
 
     public int getRGB() {
-        return (rouge<<16) | (vert<<8);
+        return (trans<<24) | (rouge<<16) | (vert<<8) | bleu;
     }
 
     public String getHexa() {
-        return ConvertRgbHexa.getHexaFromRG(rouge, vert);
+        return ConvertRgbHexa.getHexaFromRGB(getRGB());
     }
 }
