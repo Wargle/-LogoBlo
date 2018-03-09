@@ -10,8 +10,8 @@ import java.util.LinkedList;
 import java.util.List;
 import javafx.scene.Node;
 import model.Case;
-import model.CaseBleu;
-import model.CaseNULL;
+import model.CaseBlue;
+import model.CaseWhite;
 import model.ConvertRgbHexa;
 import model.MyImage;
 
@@ -102,11 +102,11 @@ public class MyImageVm {
 
     private void init() {
         //etalonage
-        ajouterCase(new CaseBleu(), 0, 0);
-        ajouterCase(new CaseBleu(), MAX_X - 1, 0);
-        ajouterCase(new CaseBleu(), 0, MAX_Y - 1);
+        ajouterCase(new CaseBlue(), 0, 0);
+        ajouterCase(new CaseBlue(), MAX_X - 1, 0);
+        ajouterCase(new CaseBlue(), 0, MAX_Y - 1);
         
-        ajouterCase(new CaseNULL(), 1, 0);
+        ajouterCase(new CaseWhite(), 1, 0);
         
         for(int i = 2; i<=17; i++) {
             String bin = String.format("%4s", Integer.toBinaryString(i - 1)).replace(' ', '0');
@@ -128,6 +128,10 @@ public class MyImageVm {
             MyImage.REAL_MATRICE_SIZE = yPos;
         
         model.printCode(path);
+    }
+    
+    public String getMessage() {
+        return model.getMessage();
     }
 
     public List<CaseVm> getCases() {

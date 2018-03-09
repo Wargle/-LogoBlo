@@ -4,8 +4,8 @@ package model;
  *
  * @author Alexis Arnould
  */
-public class CaseNULL extends Case {
-    public CaseNULL() {
+public class CaseWhite extends Case {
+    public CaseWhite() {
         super(255, 255, 255, 255);
     }
 

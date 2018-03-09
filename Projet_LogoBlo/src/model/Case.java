@@ -45,4 +45,11 @@ public class Case {
     public String getHexa() {
         return ConvertRgbHexa.getHexaFromRGB(getRGB());
     }
+
+    @Override
+    public String toString() {
+        return rouge + "x" + vert + "x" + bleu;
+    }
+    
+    
 }

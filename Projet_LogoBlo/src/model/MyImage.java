@@ -16,7 +16,7 @@ public class MyImage {
 
     public static int REAL_MATRICE_SIZE;
     private Case[][] code;
-    private IReadWriteImg io;
+    private IReadWrite io;
 
     public static final int MATRICE_SIZE = 19;
 
@@ -25,13 +25,21 @@ public class MyImage {
         io = new ReadWriteFile();
     }
 
+    /**
+     * Permet de charger un code depuis un fichier
+     * @param file 
+     */
     public void loadImg(String file) {
         code = (Case[][]) io.read(file);
     }
-
+    
+    /**
+     * Permet d'écrire un code dans un fichier
+     * @param path 
+     */
     public void printCode(String path) {
         try {
-            Files.copy(new File("src\\resources\\sample.jpg").toPath(), new File(path).toPath(), StandardCopyOption.REPLACE_EXISTING);
+            Files.copy(new File(System.getProperty("user.dir").replace("\\dist", "") + "/src/resources/sample.jpg").toPath(), new File(path).toPath(), StandardCopyOption.REPLACE_EXISTING);
             io.write(code, path);
         } 
         catch (IOException ex) {
@@ -39,8 +47,22 @@ public class MyImage {
         }
     }
 
+    /**
+     * Renvoi le message du code
+     * @return 
+     */
     public String getMessage() {
-        return "";
+        String mess = "";
+        
+        for(int j = 1; j < MATRICE_SIZE; j++) {
+            for(int i = 3; i < MATRICE_SIZE; i += 2) {
+                Case c = code[i][j], c2 = code[i + 1][j];
+                if(c == null || c2 == null) continue;
+                mess += ConvertHexaAscii.getAsciiFromHexa(ConvertRgbHexa.getHexaFromRGB(c.getRGB()).concat(ConvertRgbHexa.getHexaFromRGB(c2.getRGB())));
+            }
+        }
+        
+        return mess.replace("�", "");
     }
     
     public Case getCase(int x, int y) {
@@ -52,6 +74,6 @@ public class MyImage {
     }
     
     public void enleverCase(int x, int y) {
-        code[x][y] = new CaseNULL();
+        code[x][y] = new CaseWhite();
     }
 }

@@ -22,7 +22,7 @@ import model.ReadWriteFile;
  */
 public class CaseVm extends Rectangle {
     
-    public static final double CASE_SIZE = ReadWriteFile.CASE_SIZE;
+    public static final double CASE_SIZE = 24;
 
     private final ObjectProperty<Paint> bindColor = new SimpleObjectProperty<>();
     public Paint getBindColor() { return bindColor.get(); }

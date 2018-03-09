@@ -4,8 +4,8 @@ package model;
  *
  * @author Alexis Arnould
  */
-public class CaseBleu extends Case {
-    public CaseBleu() {
+public class CaseBlue extends Case {
+    public CaseBlue() {
         super(0, 0, 255, 255);
     }
 
